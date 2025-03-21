@@ -8,7 +8,7 @@ import SkillsSection from "../components/SkillsSection";
 import ProjectsSection from "../components/ProjectsSection";
 import ContactSection from "../components/ContactSection";
 import { motion } from "framer-motion";
-import { personalInfo } from "../constants"; // Add this import
+import { personalInfo } from "../constants";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,16 +26,22 @@ const Index = () => {
     return (
       <div className="flex items-center justify-center min-h-screen bg-background">
         <div className="flex flex-col items-center">
-          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-          <p className="mt-4 text-gray-700 font-space font-medium">Loading experience...</p>
+          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin shadow-neon"></div>
+          <p className="mt-4 text-green-light font-space font-medium">Loading experience...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative z-0 bg-background">
-      <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
+    <div className="relative z-0 bg-background text-foreground">
+      <div className="stars-container absolute inset-0 overflow-hidden">
+        <div className="stars"></div>
+        <div className="stars2"></div>
+        <div className="stars3"></div>
+      </div>
+      
+      <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center relative">
         <Navbar />
         <Hero />
       </div>
@@ -44,6 +50,7 @@ const Index = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
+        className="relative z-10"
       >
         <div id="about" className="section-wrapper">
           <AboutSection />
@@ -54,9 +61,11 @@ const Index = () => {
         <SkillsSection />
         <ContactSection />
 
-        <footer className="text-center py-10 border-t border-gray-200 mt-20">
-          <p className="text-gray-600">© 2023 {personalInfo.name}. All rights reserved.</p>
-          <p className="text-sm text-gray-500 mt-2">Crafted with precision and care</p>
+        <footer className="text-center py-10 border-t border-gray-800 mt-20">
+          <p className="text-gray-400">© 2023 {personalInfo.name}. All rights reserved.</p>
+          <p className="text-sm text-gray-500 mt-2">
+            <span className="green-gradient">Crafted with precision and care</span>
+          </p>
         </footer>
       </motion.div>
     </div>

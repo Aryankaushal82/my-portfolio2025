@@ -53,6 +53,11 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				green: {
+					light: '#8cff8c',
+					DEFAULT: '#38ef7d',
+					dark: '#2c974f'
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -91,6 +96,10 @@ export default {
 				'spin-slow': {
 					'0%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(360deg)' }
+				},
+				'glow': {
+					'0%, 100%': { boxShadow: '0 0 5px rgba(56, 239, 125, 0.5)' },
+					'50%': { boxShadow: '0 0 20px rgba(56, 239, 125, 0.8)' }
 				}
 			},
 			animation: {
@@ -100,13 +109,18 @@ export default {
 				'fade-in-right': 'fade-in-right 0.6s ease-out forwards',
 				'fade-in-left': 'fade-in-left 0.6s ease-out forwards',
 				'float': 'float 6s ease-in-out infinite',
-				'spin-slow': 'spin-slow 8s linear infinite'
+				'spin-slow': 'spin-slow 8s linear infinite',
+				'glow': 'glow 2s ease-in-out infinite'
 			},
 			boxShadow: {
 				'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
+				'neon': '0 0 10px rgba(56, 239, 125, 0.6)',
+				'neon-strong': '0 0 20px rgba(56, 239, 125, 0.8), 0 0 30px rgba(56, 239, 125, 0.6)'
 			},
 			backgroundImage: {
-				'hero-pattern': "linear-gradient(to right, rgba(245, 245, 245, 0.9), rgba(245, 245, 245, 0.3)), url('/src/assets/herobg.png')",
+				'hero-pattern': "linear-gradient(to right, rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.7)), url('/src/assets/herobg.png')",
+				'green-gradient': 'linear-gradient(135deg, #38ef7d 0%, #11998e 100%)',
+				'dark-gradient': 'linear-gradient(to bottom, #1f2937, #111827)',
 			},
 		}
 	},
