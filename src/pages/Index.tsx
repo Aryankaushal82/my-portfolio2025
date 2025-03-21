@@ -8,6 +8,7 @@ import SkillsSection from "../components/SkillsSection";
 import ProjectsSection from "../components/ProjectsSection";
 import ContactSection from "../components/ContactSection";
 import { motion } from "framer-motion";
+import { personalInfo } from "../constants"; // Add this import
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
