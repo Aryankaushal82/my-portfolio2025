@@ -28,8 +28,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full flex items-center py-5 px-8 z-20 transition-all duration-300 ease-in-out
-        ${scrolled ? "bg-white/80 backdrop-blur-sm shadow-sm" : "bg-transparent"}`}
+      className={`fixed top-0 w-full flex items-center py-4 md:py-5 px-4 md:px-8 z-20 transition-all duration-300 ease-in-out
+        ${scrolled ? "bg-background/80 backdrop-blur-sm shadow-sm" : "bg-transparent"}`}
     >
       <div className="w-full max-w-7xl mx-auto flex justify-between items-center">
         <Link
@@ -43,13 +43,13 @@ const Navbar = () => {
           <motion.img 
             src={logo} 
             alt="logo" 
-            className="w-9 h-9 object-contain" 
+            className="w-8 h-8 md:w-9 md:h-9 object-contain" 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           />
           <motion.p 
-            className="text-[18px] font-bold font-space cursor-pointer flex"
+            className="text-base md:text-[18px] font-bold font-space cursor-pointer flex"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -58,13 +58,13 @@ const Navbar = () => {
           </motion.p>
         </Link>
 
-        <ul className="hidden sm:flex flex-row gap-10">
+        <ul className="hidden sm:flex flex-row gap-6 md:gap-10">
           {navLinks.map((nav) => (
             <motion.li
               key={nav.id}
               className={`${
-                active === nav.title ? "text-primary" : "text-gray-700"
-              } hover:text-primary text-[18px] font-medium cursor-pointer nav-link`}
+                active === nav.title ? "text-primary" : "text-gray-300"
+              } hover:text-primary text-base md:text-[18px] font-medium cursor-pointer nav-link`}
               onClick={() => setActive(nav.title)}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -93,7 +93,7 @@ const Navbar = () => {
                 <li
                   key={nav.id}
                   className={`font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-primary" : "text-gray-700"
+                    active === nav.title ? "text-primary" : "text-gray-300"
                   }`}
                   onClick={() => {
                     setToggle(!toggle);

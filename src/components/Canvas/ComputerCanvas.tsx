@@ -1,4 +1,3 @@
-
 import { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF, MeshDistortMaterial, Float, Text } from "@react-three/drei";
@@ -268,7 +267,7 @@ const ComputerCanvas = () => {
       dpr={[1, 2]}
       camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
-      className="w-full h-full"
+      className="w-full h-full absolute inset-0"
     >
       <color attach="background" args={['#121212']} />
       <fog attach="fog" args={['#121212', 10, 20]} />

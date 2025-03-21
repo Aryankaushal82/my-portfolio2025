@@ -24,9 +24,9 @@ const Index = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-background">
+      <div className="flex items-center justify-center min-h-screen w-full bg-background">
         <div className="flex flex-col items-center">
-          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin shadow-neon"></div>
+          <div className="w-14 h-14 md:w-16 md:h-16 border-4 border-primary border-t-transparent rounded-full animate-spin shadow-neon"></div>
           <p className="mt-4 text-green-light font-space font-medium">Loading experience...</p>
         </div>
       </div>
@@ -34,14 +34,14 @@ const Index = () => {
   }
 
   return (
-    <div className="relative z-0 bg-background text-foreground">
+    <div className="relative z-0 bg-background text-foreground w-full min-h-screen overflow-x-hidden">
       <div className="stars-container absolute inset-0 overflow-hidden">
         <div className="stars"></div>
         <div className="stars2"></div>
         <div className="stars3"></div>
       </div>
       
-      <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center relative">
+      <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center relative w-full">
         <Navbar />
         <Hero />
       </div>
@@ -50,7 +50,7 @@ const Index = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="relative z-10"
+        className="relative z-10 w-full"
       >
         <div id="about" className="section-wrapper">
           <AboutSection />
@@ -61,9 +61,9 @@ const Index = () => {
         <SkillsSection />
         <ContactSection />
 
-        <footer className="text-center py-10 border-t border-gray-800 mt-20">
-          <p className="text-gray-400">© 2023 {personalInfo.name}. All rights reserved.</p>
-          <p className="text-sm text-gray-500 mt-2">
+        <footer className="text-center py-8 md:py-10 border-t border-gray-800 mt-16 md:mt-20 px-4">
+          <p className="text-gray-400 text-sm md:text-base">© 2023 {personalInfo.name}. All rights reserved.</p>
+          <p className="text-xs md:text-sm text-gray-500 mt-2">
             <span className="green-gradient">Crafted with precision and care</span>
           </p>
         </footer>
