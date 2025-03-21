@@ -37,31 +37,58 @@ const placeholderLogo = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlna
 const placeholderImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2YwZjBmMCIvPjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM1NTU1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSI3LjUiPkltYWdlIFBsYWNlaG9sZGVyPC90ZXh0Pjwvc3ZnPg==';
 
 // Export placeholders or actual imports based on what's available
+const logoImg = placeholderLogo as unknown as string;
+const backendImg = placeholderImage as unknown as string;
+const creatorImg = placeholderImage as unknown as string;
+const mobileImg = placeholderImage as unknown as string;
+const webImg = placeholderImage as unknown as string;
+const githubImg = placeholderImage as unknown as string;
+const menuImg = placeholderImage as unknown as string;
+const closeImg = placeholderImage as unknown as string;
+
+const cssImg = placeholderImage as unknown as string;
+const dockerImg = placeholderImage as unknown as string;
+const figmaImg = placeholderImage as unknown as string;
+const gitImg = placeholderImage as unknown as string;
+const htmlImg = placeholderImage as unknown as string;
+const javascriptImg = placeholderImage as unknown as string;
+const mongodbImg = placeholderImage as unknown as string;
+const nodejsImg = placeholderImage as unknown as string;
+const reactjsImg = placeholderImage as unknown as string;
+const reduxImg = placeholderImage as unknown as string;
+const tailwindImg = placeholderImage as unknown as string;
+const typescriptImg = placeholderImage as unknown as string;
+const threejsImg = placeholderImage as unknown as string;
+
+const project1Img = placeholderImage as unknown as string;
+const project2Img = placeholderImage as unknown as string;
+const project3Img = placeholderImage as unknown as string;
+
 export {
-  logo: placeholderLogo as unknown as string,
-  backend: placeholderImage as unknown as string,
-  creator: placeholderImage as unknown as string,
-  mobile: placeholderImage as unknown as string,
-  web: placeholderImage as unknown as string,
-  github: placeholderImage as unknown as string,
-  menu: placeholderImage as unknown as string,
-  close: placeholderImage as unknown as string,
+  logoImg as logo,
+  backendImg as backend,
+  creatorImg as creator,
+  mobileImg as mobile,
+  webImg as web,
+  githubImg as github,
+  menuImg as menu,
+  closeImg as close,
   
-  css: placeholderImage as unknown as string,
-  docker: placeholderImage as unknown as string,
-  figma: placeholderImage as unknown as string,
-  git: placeholderImage as unknown as string,
-  html: placeholderImage as unknown as string,
-  javascript: placeholderImage as unknown as string,
-  mongodb: placeholderImage as unknown as string,
-  nodejs: placeholderImage as unknown as string,
-  reactjs: placeholderImage as unknown as string,
-  redux: placeholderImage as unknown as string,
-  tailwind: placeholderImage as unknown as string,
-  typescript: placeholderImage as unknown as string,
-  threejs: placeholderImage as unknown as string,
+  cssImg as css,
+  dockerImg as docker,
+  figmaImg as figma,
+  gitImg as git,
+  htmlImg as html,
+  javascriptImg as javascript,
+  mongodbImg as mongodb,
+  nodejsImg as nodejs,
+  reactjsImg as reactjs,
+  reduxImg as redux,
+  tailwindImg as tailwind,
+  typescriptImg as typescript,
+  threejsImg as threejs,
   
-  project1: placeholderImage as unknown as string,
-  project2: placeholderImage as unknown as string,
-  project3: placeholderImage as unknown as string,
+  project1Img as project1,
+  project2Img as project2,
+  project3Img as project3,
 };
