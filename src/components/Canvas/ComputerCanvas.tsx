@@ -1,9 +1,122 @@
 
 import { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF, MeshDistortMaterial, Float } from "@react-three/drei";
+import { OrbitControls, Preload, useGLTF, MeshDistortMaterial, Float, Text } from "@react-three/drei";
 import { Vector3, Mesh, Group, MathUtils } from "three";
 import CanvasLoader from "./CanvasLoader";
+
+// 3D Floating Technology Cube component
+const TechCube = ({ position, size, color, rotationSpeed = 0.5, text }: { 
+  position: [number, number, number], 
+  size: number, 
+  color: string,
+  rotationSpeed?: number,
+  text?: string
+}) => {
+  const meshRef = useRef<Mesh>(null);
+  
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += 0.01 * rotationSpeed;
+      meshRef.current.rotation.y += 0.01 * rotationSpeed;
+      
+      // Add some floating movement
+      const t = state.clock.getElapsedTime();
+      meshRef.current.position.y = position[1] + Math.sin(t * 0.5) * 0.1;
+    }
+  });
+
+  return (
+    <group position={position}>
+      <mesh ref={meshRef}>
+        <boxGeometry args={[size, size, size]} />
+        <meshStandardMaterial 
+          color={color} 
+          metalness={0.8}
+          roughness={0.2} 
+          emissive={color}
+          emissiveIntensity={0.2}
+        />
+      </mesh>
+      {text && (
+        <Text
+          position={[0, -size/1.5, 0]}
+          fontSize={size * 0.4}
+          color="#ffffff"
+          anchorX="center"
+          anchorY="middle"
+        >
+          {text}
+        </Text>
+      )}
+    </group>
+  );
+};
+
+// Floating particle system
+const ParticleSystem = ({ count = 50, radius = 10 }) => {
+  const particles = useRef<Group>(null);
+  
+  useFrame((state) => {
+    if (particles.current) {
+      particles.current.rotation.y += 0.001;
+    }
+  });
+
+  return (
+    <group ref={particles}>
+      {Array.from({ length: count }).map((_, i) => {
+        const angle = (i / count) * Math.PI * 2;
+        const r = Math.random() * radius;
+        const x = Math.cos(angle) * r;
+        const y = (Math.random() - 0.5) * radius;
+        const z = Math.sin(angle) * r;
+        const size = Math.random() * 0.1 + 0.05;
+        
+        return (
+          <Float key={i} speed={2} rotationIntensity={1} floatIntensity={2}>
+            <mesh position={[x, y, z]}>
+              <sphereGeometry args={[size, 8, 8]} />
+              <meshStandardMaterial 
+                color="#38ef7d" 
+                emissive="#38ef7d"
+                emissiveIntensity={0.5 + Math.random() * 0.5}
+                transparent
+                opacity={0.6 + Math.random() * 0.4}
+              />
+            </mesh>
+          </Float>
+        );
+      })}
+    </group>
+  );
+};
+
+// Glowing ring
+const GlowingRing = ({ position = [0, 0, 0], radius = 2, tubeRadius = 0.02, color = "#38ef7d" }) => {
+  const ringRef = useRef<Mesh>(null);
+  
+  useFrame((state) => {
+    if (ringRef.current) {
+      const t = state.clock.getElapsedTime();
+      ringRef.current.rotation.x = Math.sin(t * 0.3) * 0.2;
+      ringRef.current.rotation.y = Math.sin(t * 0.2) * 0.3;
+    }
+  });
+  
+  return (
+    <mesh ref={ringRef} position={position}>
+      <torusGeometry args={[radius, tubeRadius, 16, 100]} />
+      <meshStandardMaterial 
+        color={color} 
+        emissive={color}
+        emissiveIntensity={1}
+        transparent
+        opacity={0.8}
+      />
+    </mesh>
+  );
+};
 
 const ModernComputer = ({ isMobile }: { isMobile: boolean }) => {
   const computerRef = useRef<Group>(null);
@@ -125,34 +238,6 @@ const ModernComputer = ({ isMobile }: { isMobile: boolean }) => {
         <boxGeometry args={[0.8, 0.02, 0.3]} />
         <meshStandardMaterial color="#444444" />
       </mesh>
-      
-      {/* Floating code particles around the computer */}
-      {Array.from({ length: 15 }).map((_, i) => {
-        const size = Math.random() * 0.1 + 0.05;
-        const angle = (i / 15) * Math.PI * 2;
-        const radius = 2 + Math.random() * 1;
-        
-        return (
-          <Float key={i} speed={3} rotationIntensity={2} floatIntensity={2}>
-            <mesh 
-              position={[
-                Math.sin(angle) * radius, 
-                Math.random() * 2 - 1, 
-                Math.cos(angle) * radius
-              ]}
-            >
-              <icosahedronGeometry args={[size, 0]} />
-              <meshPhongMaterial 
-                color="#38ef7d" 
-                emissive="#38ef7d"
-                emissiveIntensity={0.5}
-                transparent
-                opacity={0.7}
-              />
-            </mesh>
-          </Float>
-        );
-      })}
     </group>
   );
 };
@@ -196,7 +281,22 @@ const ComputerCanvas = () => {
           autoRotate
           autoRotateSpeed={0.5}
         />
+        
+        {/* Main computer model */}
         <ModernComputer isMobile={isMobile} />
+        
+        {/* Add floating tech cubes */}
+        <TechCube position={[-4, 0.5, -3]} size={0.6} color="#38ef7d" rotationSpeed={0.7} text="React" />
+        <TechCube position={[4, 0, -2]} size={0.5} color="#0ea5e9" rotationSpeed={0.5} text="TypeScript" />
+        <TechCube position={[-3, -1, -1]} size={0.45} color="#8b5cf6" rotationSpeed={0.6} text="Node.js" />
+        
+        {/* Add particle system */}
+        <ParticleSystem count={isMobile ? 30 : 60} radius={isMobile ? 8 : 12} />
+        
+        {/* Add glowing rings */}
+        <GlowingRing position={[0, 0, -5]} radius={3} tubeRadius={0.03} />
+        <GlowingRing position={[0, 0, -8]} radius={5} tubeRadius={0.02} color="#21a561" />
+        <GlowingRing position={[0, 0, -11]} radius={7} tubeRadius={0.01} color="#8cff8c" />
       </Suspense>
 
       <Preload all />
