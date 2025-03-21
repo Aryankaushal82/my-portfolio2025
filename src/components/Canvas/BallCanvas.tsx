@@ -1,5 +1,4 @@
-
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Decal,
@@ -11,13 +10,9 @@ import {
 
 import CanvasLoader from "./CanvasLoader";
 
-const Ball = ({ imgUrl }: { imgUrl: string }) => {
-  // Since we don't have actual texture files, we'll create a simple colored ball
-  // In a real project, you would use useTexture to load your textures
-  /* 
-  const [decal] = useTexture([imgUrl]);
-  */
-
+const Ball = ({ icon }: { icon: string }) => {
+  const [decal] = useTexture([icon]);
+  
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
       <ambientLight intensity={0.25} />
@@ -30,8 +25,6 @@ const Ball = ({ imgUrl }: { imgUrl: string }) => {
           polygonOffsetFactor={-5}
           flatShading
         />
-        {/* In a real project, you would use Decal with actual textures */}
-        {/*
         <Decal
           position={[0, 0, 1]}
           rotation={[2 * Math.PI, 0, 6.25]}
@@ -39,13 +32,22 @@ const Ball = ({ imgUrl }: { imgUrl: string }) => {
           map={decal}
           flatShading
         />
-        */}
       </mesh>
     </Float>
   );
 };
 
 const BallCanvas = ({ icon }: { icon: string }) => {
+  // Add error handling for texture loading
+  const [hasError, setHasError] = useState(false);
+  
+  useEffect(() => {
+    // Check if the icon URL is valid
+    const img = new Image();
+    img.onerror = () => setHasError(true);
+    img.src = icon;
+  }, [icon]);
+
   return (
     <Canvas
       frameloop="demand"
@@ -54,7 +56,7 @@ const BallCanvas = ({ icon }: { icon: string }) => {
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} />
-        <Ball imgUrl={icon} />
+        {!hasError && <Ball icon={icon} />}
       </Suspense>
 
       <Preload all />

@@ -28,9 +28,9 @@ export const personalInfo = {
   location: "Punjab, India",
   email: "kaushalaryan1234@gmail.com",
   phone: "+917888593684",
-  linkedin: "linkedin.com",
-  github: "github.com",
-  leetcode: "leetcode.com"
+  linkedin: "linkedin.com/in/aryan-kaushal-91a2b0255/",
+  github: "github.com/Aryankaushal82",
+  leetcode: "leetcode.com/u/Aryan_Kaushal777/"
 };
 
 // Education information
@@ -81,6 +81,18 @@ export const experiences = [
       "Built and deployed a Student Management Portal and a Quiz Conduction Platform using the MERN stack (MongoDB, Express.js, React.js, Node.js), enhancing operational efficiency.",
       "Integrated secure authentication and authorization systems, ensuring data privacy compliance and protecting sensitive information for many users.",
       "Optimized application performance with REST API integrations, utilizing JSON, and XML formats, improving load times and ensuring seamless data exchange across services."
+    ]
+  },
+  {
+    title: "Software Developer Intern",
+    company: "Ikarus",
+    duration: "Currently Working",
+    location: "Mohali",
+    points: [
+      "Exploring and learning new technologies and frameworks to improve my skills.",
+      "Working on a project to develop a web application for a client.",
+      "Collaborating with the team to develop and deploy the project.",
+      "Participating in code reviews and providing feedback to other developers."
     ]
   }
 ];
@@ -144,34 +156,7 @@ export const projects = [
     source_code_link: "https://github.com/",
     demo_link: "https://example.com/",
   },
-  {
-    name: "Student Management Portal",
-    description: "A comprehensive platform for managing student data, courses, and academic performance using the MERN stack and RESTful APIs.",
-    tech: "MongoDB, Express.js, React.js, Node.js",
-    date: "January 2025",
-    points: [
-      "Developed a full-featured student management system with secure authentication.",
-      "Implemented real-time updates for attendance and grade tracking.",
-      "Created an intuitive dashboard for students and administrators."
-    ],
-    tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "supabase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: project3,
-    source_code_link: "https://github.com/",
-    demo_link: "https://example.com/",
-  },
+
 ];
 
 // Leadership & Certifications
@@ -237,59 +222,55 @@ const services = [
   },
 ];
 
+
 const technologies = [
   {
     name: "HTML 5",
-    icon: html,
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
   },
   {
     name: "CSS 3",
-    icon: css,
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
   },
   {
     name: "JavaScript",
-    icon: javascript,
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
   },
   {
     name: "TypeScript",
-    icon: typescript,
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
   },
   {
     name: "React JS",
-    icon: reactjs,
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   },
   {
-    name: "Redux Toolkit",
-    icon: redux,
+    name: "Redux",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
   },
   {
     name: "Tailwind CSS",
-    icon: tailwind,
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
   },
   {
     name: "Node JS",
-    icon: nodejs,
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
   },
   {
     name: "MongoDB",
-    icon: mongodb,
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
   },
   {
     name: "Three JS",
-    icon: threejs,
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg",
   },
   {
-    name: "git",
-    icon: git,
+    name: "Git",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
   },
   {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
-  },
+    name: "Docker",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+  }
 ];
-
 export { services, technologies };
