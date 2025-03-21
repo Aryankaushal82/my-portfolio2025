@@ -93,7 +93,7 @@ const ParticleSystem = ({ count = 50, radius = 10 }) => {
 };
 
 // Glowing ring
-const GlowingRing = ({ position = [0, 0, 0], radius = 2, tubeRadius = 0.02, color = "#38ef7d" }) => {
+const GlowingRing = ({ position = [0, 0, 0] as [number, number, number], radius = 2, tubeRadius = 0.02, color = "#38ef7d" }) => {
   const ringRef = useRef<Mesh>(null);
   
   useFrame((state) => {
@@ -293,7 +293,7 @@ const ComputerCanvas = () => {
         {/* Add particle system */}
         <ParticleSystem count={isMobile ? 30 : 60} radius={isMobile ? 8 : 12} />
         
-        {/* Add glowing rings */}
+        {/* Add glowing rings - fixed position to have exactly 3 elements */}
         <GlowingRing position={[0, 0, -5]} radius={3} tubeRadius={0.03} />
         <GlowingRing position={[0, 0, -8]} radius={5} tubeRadius={0.02} color="#21a561" />
         <GlowingRing position={[0, 0, -11]} radius={7} tubeRadius={0.01} color="#8cff8c" />
